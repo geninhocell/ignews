@@ -54,7 +54,7 @@ const subscribe = async (
       billing_address_collection: 'required',
       line_items: [
         {
-          price: 'price_1IY93TGRoasA9ufryqtfrYsW',
+          price: process.env.STRIPE_PRODUCT_ID,
           quantity: 1,
         },
       ],
@@ -63,8 +63,6 @@ const subscribe = async (
       success_url: process.env.STRIPE_SUCCESS_URL,
       cancel_url: process.env.STRIPE_CANCEL_URL,
     });
-
-    // console.log('stripeCheckoutSession', stripeCheckoutSession);
 
     response.status(200).json({ sessionId: stripeCheckoutSession.id });
 
